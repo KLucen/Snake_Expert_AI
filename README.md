@@ -43,3 +43,4 @@ package.json - 是根据有关蛇在wiki上的内容构建的用于RAG检索的�
 ### 王江-中国蛇类特征数据集.xls
 
 ##
+模型链接https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Classification/ConvNets/efficientnet
