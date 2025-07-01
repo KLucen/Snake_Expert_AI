@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蛇类识别系统 | 技术详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/info.css">
+</head>
+<body>
+<!-- 顶部导航 -->
+<header>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-snake"></i>
+            <span class="lang" key="logo">蛇类识别系统</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> <span class="lang" key="home">首页</span></a></li>
+                <li><a href="info.html" class="active"><i class="fas fa-info-circle"></i> <span class="lang" key="about">关于</span></a></li>
+                <li><a href="handbook.html"><i class="fas fa-book"></i> <span class="lang" key="handbook">蛇类百科</span></a></li>
+                <li><a href="rescue.html"><i class="fas fa-first-aid"></i> <span class="lang" key="first aid">急救指南</span></a></li>
+                <li class="language-switcher">
+                    <button class="lang-btn active" data-lang="zh">
+                        <i class="fas fa-language"></i> 中文
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <i class="fas fa-language"></i> English
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- 主内容区 -->
+<main class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="lang" key="page-title">蛇类识别系统技术详情</h1>
+            <p class="lang" key="page-subtitle">深入了解蛇类识别系统背后的技术原理和实现细节。</p>
+        </div>
+        <div class="hero-image">
+            <!-- 隐藏图片区域 -->
+        </div>
+    </section>
+
+    <!-- 技术内容 -->
+    <section class="tech-section">
+        <div class="section-header">
+            <h2><i class="fas fa-cogs"></i> <span class="lang" key="architecture-title">技术架构</span></h2>
+        </div>
+        <div class="tech-content">
+            <p class="lang" key="architecture-p1">蛇类识别系统基于深度学习和人工智能技术构建，主要由前端展示、后端服务和模型推理三部分组成。</p>
+            <ul>
+                <li><strong class="lang" key="frontend">前端展示</strong>: <span class="lang" key="frontend-desc">使用 HTML、CSS 和 JavaScript 构建用户界面，提供友好的交互体验，支持图片上传、拖放和预览功能。</span></li>
+                <li><strong class="lang" key="backend">后端服务</strong>: <span class="lang" key="backend-desc">采用 Flask 框架搭建，负责处理用户请求、文件上传和调用模型进行预测，并将结果返回给前端展示。</span></li>
+                <li><strong class="lang" key="model">模型推理</strong>: <span class="lang" key="model-desc">使用 PyTorch 深度学习框架加载预训练的 EfficientNet-WideSE-B4 模型，对上传的蛇类图片进行分类识别，并计算识别置信度。</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="section-header">
+            <h2><i class="fas fa-database"></i> <span class="lang" key="data-title">数据处理</span></h2>
+        </div>
+        <div class="tech-content">
+            <p class="lang" key="data-p1">系统使用了大量的蛇类图片数据进行训练和验证，数据来源广泛，包括公开数据集和爬虫收集的图片。</p>
+            <ul>
+                <li><strong class="lang" key="annotation">数据标注</strong>: <span class="lang" key="annotation-desc">对图片进行标注，确定每条蛇的物种名称和类别 ID，以便模型学习和识别。</span></li>
+                <li><strong class="lang" key="preprocessing">数据预处理</strong>: <span class="lang" key="preprocessing-desc">在训练前，对图片进行预处理，包括调整尺寸、归一化等操作，以提高模型的训练效果。</span></li>
+                <li><strong class="lang" key="augmentation">数据增强</strong>: <span class="lang" key="augmentation-desc">采用数据增强技术，如随机裁剪、翻转、旋转等，扩充数据集，提高模型的泛化能力。</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="section-header">
+            <h2><i class="fas fa-brain"></i> <span class="lang" key="training-title">模型训练</span></h2>
+        </div>
+        <div class="tech-content">
+            <p class="lang" key="training-p1">系统使用预训练的 EfficientNet-WideSE-B4 模型作为基础模型，并在蛇类数据集上进行微调。</p>
+            <ul>
+                <li><strong class="lang" key="structure">模型结构</strong>: <span class="lang" key="structure-desc">EfficientNet-WideSE-B4 是一种高效的卷积神经网络，具有强大的特征提取能力和较高的准确率。</span></li>
+                <li><strong class="lang" key="process">训练过程</strong>: <span class="lang" key="process-desc">使用交叉熵损失函数和随机梯度下降优化器进行训练，通过不断调整模型参数，提高模型的识别准确率。</span></li>
+                <li><strong class="lang" key="evaluation">模型评估</strong>: <span class="lang" key="evaluation-desc">使用验证集对模型进行评估，计算准确率、召回率、F1 值等指标，评估模型的性能。</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="section-header">
+            <h2><i class="fa fa-search"></i> <span class="lang" key="info-title">信息生成</span></h2>
+        </div>
+        <div class="tech-content">
+            <p class="lang" key="info-p1">系统使用 DeepSeek AI 生成蛇类的详细信息，包括物种名称、是否有毒、区域与生境、行为总结、安全提示和咬伤急救等内容。</p>
+            <ul>
+                <li><strong class="lang" key="api">API 调用</strong>: <span class="lang" key="api-desc">通过 OpenAI 接口调用 DeepSeek AI 模型，输入蛇的物种名称，获取详细信息。</span></li>
+                <li><strong class="lang" key="processing">信息处理</strong>: <span class="lang" key="processing-desc">将返回的 Markdown 格式信息转换为 HTML 格式，以便在网页上展示。</span></li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- 页脚 -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3><i class="fas fa-snake"></i> <span class="lang" key="logo">蛇类识别系统</span></h3>
+                <p class="lang" key="footer-desc">基于深度学习和人工智能的专业蛇类识别工具，帮助您快速识别蛇类并提供安全信息。</p>
+            </div>
+
+            <div class="footer-links">
+                <h4 class="lang" key="quick-links">快速链接</h4>
+                <ul>
+                    <li><a href="{{ url_for('index') }}"><i class="fas fa-chevron-right"></i> <span class="lang" key="home">首页</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span class="lang" key="handbook">蛇类百科</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span class="lang" key="first-aid">急救指南</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span class="lang" key="about-us">关于我们</span></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4 class="lang" key="contact">联系我</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> pengyp@cuc.edu.cn</li>
+                    <li><i class="fas fa-phone"></i> +86 18081941383</li>
+                    <li><i class="fa fa-graduation-cap" aria-hidden="true"></i> <span class="lang" key="university">中国传媒大学</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="lang" key="copyright">&copy; 2025 蛇类识别系统 | 基于PyTorch和Flask构建 | 信息由DeepSeek AI提供</p>
+            <div class="social-links">
+                <a href="https://github.com/KLucen/Snake_Expert_AI" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-weixin" target="_blank"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/static/js/info.js"></script>
+</body>
+</html>

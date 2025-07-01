@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蛇类图鉴百科全书</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/handbook.css') }}">
+</head>
+<body>
+<div class="language-switcher">
+    <button id="langZh" class="active">中文</button>
+    <button id="langEn">English</button>
+</div>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-book"></i>
+                <h1 id="pageTitle">蛇类图鉴百科全书</h1>
+                <i class="fas fa-snake"></i>
+            </div>
+            <p class="subtitle" id="pageSubtitle">探索蛇类世界的奥秘 - 收录12种珍稀蛇类详细信息，包括毒性、分布区域、生活习性及保护状况</p>
+
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> <span>首页</span></a></li>
+                    <li><a href="info.html"><i class="fas fa-info-circle"></i> <span>关于</span></a></li>
+                    <li><a href="handbook.html" class="active"><i class="fas fa-book"></i> <span>蛇类百科</span></a></li>
+                    <li><a href="rescue.html"><i class="fas fa-first-aid"></i> <span>急救指南</span></a></li>
+                </ul>
+            </nav>
+
+            <div class="search-container">
+                <input type="text" class="search-box" id="searchInput" placeholder="搜索蛇类名称...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label" id="statSpecies">蛇类物种</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label" id="statVenomous">有毒蛇种</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label" id="statProtected">保护物种</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="book-container">
+        <div class="book">
+            <div class="book-decoration">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+            </div>
+            <div class="page-content">
+                <div class="snake-grid" id="snakeGrid">
+                    <!-- 蛇类卡片将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="detail-page" id="detailPage">
+    <div class="detail-header">
+        <div>
+            <h2 class="detail-title" id="detailName">银环蛇</h2>
+            <p class="detail-scientific" id="detailScientific">Bungarus multicinctus</p>
+        </div>
+        <button class="close-btn" id="closeDetail">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="detail-content">
+        <div class="detail-image">
+            <img id="detailImage" src="https://upload.wikimedia.org/wikipedia/commons/0/01/Bungarus_multicinctus_2.jpg" alt="蛇类图片">
+        </div>
+
+        <div class="detail-info">
+            <div class="info-section">
+                <h3 class="info-title"><i class="fas fa-skull"></i> <span id="toxicityTitle">毒性信息</span></h3>
+                <div class="info-content">
+                    <p id="detailToxicity">银环蛇为台湾六大毒蛇之一，毒腺很小，但毒性强烈</p>
+                    <p id="dangerLevelLabel">危险级别: <span id="detailDanger">高度危险</span></p>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3 class="info-title"><i class="fas fa-globe-asia"></i> <span id="distributionTitle">分布区域</span></h3>
+                <div class="info-content">
+                    <p id="detailDistribution">银环蛇分布地区包括中国大陆南部、香港、缅甸、台湾、越南，等地。</p>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3 class="info-title"><i class="fas fa-tree"></i> <span id="habitatTitle">栖息环境</span></h3>
+                <div class="info-content">
+                    <p id="detailHabitat">多栖息于水边</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h3 class="info-title"><i class="fas fa-running"></i> <span id="behaviorTitle">行为特征</span></h3>
+        <div class="info-content">
+            <p id="detailBehavior">银环蛇在夜间活动，多栖息水边，以鱼、蛙、蛇、鼠为食物。近来面临了人类捕杀与栖息地被破坏的问题,性情较温和不若眼镜蛇凶猛，受干扰时会尽可能迅速逃走，或将身体盘成大8字形并将头部藏在蛇身下，除非遭受严重威胁，否则不会轻易发动攻击</p>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h3 class="info-title"><i class="fas fa-exclamation-triangle"></i> <span id="noticeTitle">注意事项</span></h3>
+        <div class="info-content">
+            <ul id="detailNotice">
+                <!-- 注意事项将通过JavaScript动态生成 -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h3 class="info-title"><i class="fas fa-book"></i> <span id="encyclopediaTitle">百科资料</span></h3>
+        <div class="info-content">
+            <p>维基百科: <a id="wikiLink" href="https://zh.wikipedia.org/zh-hans/%E9%8A%80%E7%92%B0%E8%9B%87" target="_blank" style="color: #4caf50; text-decoration: none;"><span id="viewFullLabel">查看完整资料</span> <i class="fas fa-external-link-alt"></i></a></p>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p id="footerText">© 2025 蛇类图鉴百科 | 信息来源于维基百科</p>
+</footer>
+
+<script src="/static/js/handbook.js"></script>
+
+</body>
+</html>

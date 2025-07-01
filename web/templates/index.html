@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蛇类识别系统 | 专业蛇类识别工具</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+<!-- 顶部导航 -->
+<header>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-snake"></i>
+            <span data-lang-key="logo">蛇类识别系统</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}" class="active"><i class="fas fa-home"></i> <span data-lang-key="home">首页</span></a></li>
+                <li><a href="info.html"><i class="fas fa-info-circle"></i> <span data-lang-key="about">关于</span></a></li>
+                <li><a href="handbook.html"><i class="fas fa-book"></i> <span data-lang-key="handbook">蛇类图鉴</span></a></li>
+                <li><a href="rescue.html"><i class="fas fa-first-aid"></i> <span class="lang" key="first aid">急救指南</span></a></li>
+                <li class="language-switcher">
+                    <button class="lang-btn active" data-lang="zh">
+                        <i class="fas fa-language"></i> <span data-lang-key="chinese">中文</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <i class="fas fa-language"></i> <span data-lang-key="english">English</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- 主内容区 -->
+<main class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-lang-key="title">专业蛇类识别系统</h1>
+            <p data-lang-key="subtitle">上传蛇的图片，立即获取种类信息和安全提示</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value">{{ nclass }}+</div>
+                    <div class="stat-label" data-lang-key="species">蛇类物种</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">99%</div>
+                    <div class="stat-label" data-lang-key="accuracy">识别准确率</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24h</div>
+                    <div class="stat-label" data-lang-key="availability">随时可用</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="../static/img/character.jpg" alt="蛇类识别" width="600" height="900">
+        </div>
+    </section>
+
+    <!-- 上传区域 -->
+    <section class="upload-section">
+        <div class="section-header">
+            <h2><i class="fas fa-cloud-upload-alt"></i> <span data-lang-key="upload-title">上传蛇类图片</span></h2>
+            <p data-lang-key="upload-desc">支持JPG、PNG格式，最大5MB</p>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" id="upload-form">
+            <div class="upload-card">
+                <div class="upload-area" id="drop-area">
+                    <input type="file" id="file-input" name="file" accept="image/*" hidden>
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3 data-lang-key="drop-text">拖放图片到此处</h3>
+                    <p>
+                        <span data-lang-key="browse-text">或</span>
+                        <label for="file-input" class="browse-btn">
+                            <span data-lang-key="browse-btn">浏览文件</span>
+                        </label>
+                    </p>
+                    <img id="preview" src="" alt="">
+                </div>
+
+                <div class="upload-actions">
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-search"></i> <span data-lang-key="identify-btn">识别蛇类</span>
+                    </button>
+                </div>
+
+                <div id="loading" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p data-lang-key="analyzing">正在分析图片，请稍候...</p>
+                </div>
+            </div>
+        </form>
+    </section>
+
+
+    <!-- 结果展示区 -->
+    {% if primary_result %}
+    <section class="result-section">
+        <div class="section-header">
+            <h2><i class="fas fa-search"></i> <span data-lang-key="result-title">识别结果</span></h2>
+        </div>
+
+        <!-- 主要结果 -->
+        <div class="result-grid">
+            <!-- 图片预览 -->
+            <div class="result-card image-preview">
+                <div class="card-header">
+                    <h3><i class="fas fa-image"></i> <span data-lang-key="uploaded-image">上传的图片</span></h3>
+                </div>
+                <div class="card-body">
+                    <img src="{{ url_for('static', filename='uploads/' + image_file) }}" alt="识别图片">
+                </div>
+            </div>
+
+            <!-- 主要结果的基本信息 -->
+            <div class="result-card basic-info">
+                <div class="card-header">
+                    <h3><i class="fas fa-info-circle"></i> <span data-lang-key="primary-result">主要结果</span></h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-item">
+                        <div class="info-label" data-lang-key="species-name">物种名称</div>
+                        <div class="info-value">{{ primary_result.species }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label" data-lang-key="class-id">类别ID</div>
+                        <div class="info-value">{{ primary_result.class_id }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label" data-lang-key="confidence">识别置信度</div>
+                        <div class="info-value">
+                            {{ primary_result.confidence }}
+                            <div class="confidence-bar">
+                                <div class="confidence-level" :style="{ width: confidenceWidth }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主要结果的详细信息 -->
+            <div class="result-card detailed-info">
+                <div class="card-header">
+                    <h3><i class="fas fa-file-alt"></i> <span data-lang-key="details">详细信息</span></h3>
+                </div>
+                <div class="card-body">
+                    <div class="snake-info">
+                        {{ primary_result.snake_info_html|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 次要结果（如果有） -->
+        {% if secondary_result %}
+        <div class="section-header" style="margin-top: 40px;">
+            <h3><i class="fas fa-star-half-alt"></i> <span data-lang-key="secondary-result">备选结果</span></h3>
+            <p data-lang-key="secondary-desc">主要结果置信度低于90%，提供备选识别结果</p>
+        </div>
+
+        <div class="result-grid secondary-result">
+            <div class="result-card image-preview" style="visibility: hidden;">
+                <!-- 空白占位，保持布局一致 -->
+            </div>
+
+            <!-- 次要结果的基本信息 -->
+            <div class="result-card basic-info">
+                <div class="card-header" style="background-color: #6c757d;">
+                    <h3><i class="fas fa-info-circle"></i> <span data-lang-key="secondary-species">备选物种</span></h3>
+                </div>
+                <div class="card-body">
+                    <div class="info-item">
+                        <div class="info-label" data-lang-key="species-name">物种名称</div>
+                        <div class="info-value">{{ secondary_result.species }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label" data-lang-key="class-id">类别ID</div>
+                        <div class="info-value">{{ secondary_result.class_id }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label" data-lang-key="confidence">识别置信度</div>
+                        <div class="info-value">
+                            {{ secondary_result.confidence }}
+                            <div class="confidence-bar">
+                                <div class="confidence-level" :style="{ width: confidenceWidth }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次要结果的详细信息 -->
+            <div class="result-card detailed-info">
+                <div class="card-header" style="background-color: #6c757d;">
+                    <h3><i class="fas fa-file-alt"></i> <span data-lang-key="details">详细信息</span></h3>
+                </div>
+                <div class="card-body">
+                    <div class="snake-info">
+                        {{ secondary_result.snake_info_html|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- Wiki百科查询 -->
+    <section class="wiki-section">
+        <div class="section-header">
+            <h2><i class="fa fa-search-plus"></i> <span data-lang-key="wiki-title">蛇类百科</span></h2>
+            <p data-lang-key="wiki-subtitle">滑动浏览更多蛇类信息</p>
+        </div>
+
+        <div class="wiki-carousel">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- 蛇类百科项目1 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Boiga_kraepelini.jpg" alt="绞花林蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>绞花林蛇</h3>
+                            <div class="wiki-scientific">Boiga kraepelini</div>
+                            <div class="wiki-toxicity toxic">
+                                <i class="fas fa-skull"></i> <span data-lang-key="toxic">剧毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E7%BB%9E%E8%8A%B1%E6%9E%97%E8%9B%87" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目2 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Bungarus_multicinctus_2.jpg" alt="银环蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>银环蛇</h3>
+                            <div class="wiki-scientific">Bungarus multicinctus</div>
+                            <div class="wiki-toxicity toxic">
+                                <i class="fas fa-skull"></i> <span data-lang-key="toxic">剧毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/zh-hans/%E9%8A%80%E7%92%B0%E8%9B%87" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目3 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Chrysopelea_ornata.jpg" alt="美丽金花蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>美丽金花蛇</h3>
+                            <div class="wiki-scientific">Chrysopelea ornate</div>
+                            <div class="wiki-toxicity non-toxic">
+                                <i class="fas fa-leaf"></i> <span data-lang-key="non-toxic">无毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E9%87%91%E8%8A%B1%E8%9B%87%E5%B1%AC" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目4 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Dendre_pict_080410-6996_tdp.jpg" alt="过树蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>过树蛇</h3>
+                            <div class="wiki-scientific">Dendrelaphis pictus</div>
+                            <div class="wiki-toxicity non-toxic">
+                                <i class="fas fa-leaf"></i> <span data-lang-key="non-toxic">无毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E8%BF%87%E6%A0%91%E8%9B%87" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目5 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Elaphe_dione.JPG" alt="白条锦蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>白条锦蛇</h3>
+                            <div class="wiki-scientific">Elaphe dione</div>
+                            <div class="wiki-toxicity non-toxic">
+                                <i class="fas fa-leaf"></i> <span data-lang-key="non-toxic">无毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E7%99%BD%E6%9D%A1%E9%94%A6%E8%9B%87" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目6 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Naja_atra_%2803%29.jpg" alt="舟山眼镜蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>舟山眼镜蛇</h3>
+                            <div class="wiki-scientific">Naja atra</div>
+                            <div class="wiki-toxicity toxic">
+                                <i class="fas fa-skull"></i> <span data-lang-key="toxic">剧毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E7%9C%BC%E9%8F%A1%E8%9B%87" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目7 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Trimeresurus_mucrosquamatus_Taiwan.jpg" alt="龟壳花">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>龟壳花</h3>
+                            <div class="wiki-scientific">Protobothrops mucrosquamatus</div>
+                            <div class="wiki-toxicity toxic">
+                                <i class="fas fa-skull"></i> <span data-lang-key="toxic">剧毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E9%BE%9C%E6%AE%BC%E8%8A%B1" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目8 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Psammodynastes_pulverulentus%2C_Common_mock_viper_-_Tha_Yang_District%2C_Phetchaburi_%2827997141896%29.jpg" alt="紫沙蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>紫沙蛇</h3>
+                            <div class="wiki-scientific">Psammodynastes pulverulentus</div>
+                            <div class="wiki-toxicity toxic">
+                                <i class="fas fa-skull"></i> <span data-lang-key="toxic">剧毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/zh-hans/%E7%B4%AB%E6%B2%99%E8%9B%87" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目9 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Rhabdop_submin_080217-4693_ipb.jpg" alt="红脖颈槽蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>红脖颈槽蛇</h3>
+                            <div class="wiki-scientific">Rhabdophis subminiatus</div>
+                            <div class="wiki-toxicity toxic">
+                                <i class="fas fa-skull"></i> <span data-lang-key="toxic">剧毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E7%BA%A2%E8%84%96%E9%A2%88%E6%A7%BD%E8%9B%87" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目10 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Rhabdophis_tigrinus_IMG_6559.retouch.JPG" alt="虎斑颈槽蛇">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>虎斑颈槽蛇</h3>
+                            <div class="wiki-scientific">Rhabdophis tigrinus</div>
+                            <div class="wiki-toxicity toxic">
+                                <i class="fas fa-skull"></i> <span data-lang-key="toxic">剧毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E8%99%8E%E6%96%91%E9%A2%88%E6%A7%BD%E8%9B%87" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 蛇类百科项目11 -->
+                    <div class="wiki-item">
+                        <div class="wiki-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Trimeresurus_stejnegeri.jpg" alt="赤尾青竹丝">
+                        </div>
+                        <div class="wiki-info">
+                            <h3>赤尾青竹丝</h3>
+                            <div class="wiki-scientific">Trimeresurus stejnegeri</div>
+                            <div class="wiki-toxicity toxic">
+                                <i class="fas fa-skull"></i> <span data-lang-key="toxic">剧毒</span>
+                            </div>
+                            <a href="https://zh.wikipedia.org/wiki/%E8%B5%A4%E5%B0%BE%E9%9D%92%E7%AB%B9%E7%B5%B2" target="_blank" class="wiki-link">
+                                <i class="fas fa-external-link-alt"></i> <span data-lang-key="view-wiki">查看百科</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- 页脚 -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3><i class="fas fa-snake"></i> <span data-lang-key="logo">蛇类识别系统</span></h3>
+                <p data-lang-key="footer-desc">基于深度学习和人工智能的专业蛇类识别工具，帮助您快速识别蛇类并提供安全信息。</p>
+            </div>
+
+            <div class="footer-links">
+                <h4 data-lang-key="quick-links">快速链接</h4>
+                <ul>
+                    <li><a href="{{ url_for('index') }}"><i class="fas fa-chevron-right"></i> <span data-lang-key="home">首页</span></a></li>
+                    <li><a href="handbook.html"><i class="fas fa-chevron-right"></i> <span data-lang-key="handbook">蛇类图鉴</span></a></li>
+                    <li><a href="rescue.html"><i class="fas fa-chevron-right"></i> <span data-lang-key="first-aid">急救指南</span></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4 data-lang-key="contact">联系我</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> pengyp@cuc.edu.cn</li>
+                    <li><i class="fas fa-phone"></i> +86 18081941383</li>
+                    <li><i class="fa fa-graduation-cap" aria-hidden="true"></i> <span data-lang-key="university">中国传媒大学</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p data-lang-key="copyright">&copy; 2025 蛇类识别系统 | 基于PyTorch和Flask构建 | 信息由DeepSeek AI提供</p>
+            <div class="social-links">
+                <a href="https://github.com/KLucen/Snake_Expert_AI" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="../static/html/WXQR.html"><i class="fab fa-weixin" target="_blank"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/static/js/index.js"></script>
+</body>
+</html>
