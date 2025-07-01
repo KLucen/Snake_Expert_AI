@@ -1,0 +1,19 @@
+Classification Report:
+                              precision    recall  f1-score   support
+
+            Boiga kraepelini       0.79      0.86      0.83        22
+       Bungarus multicinctus       0.88      0.97      0.92        30
+          Chrysopelea ornata       0.89      0.96      0.93        26
+         Dendrelaphis pictus       0.80      0.86      0.83        28
+                Elaphe dione       0.94      0.73      0.82        22
+                   Naja atra       0.83      0.73      0.78        26
+          Ophiophagus hannah       0.87      0.74      0.80        27
+Protobothrops mucrosquamatus       0.80      0.96      0.87        25
+Psammodynastes pulverulentus       0.79      0.88      0.83        25
+      Rhabdophis subminiatus       0.88      0.81      0.84        26
+         Rhabdophis tigrinus       0.80      0.76      0.78        21
+     Trimeresurus stejnegeri       0.96      0.88      0.92        25
+
+                    accuracy                           0.85       303
+                   macro avg       0.85      0.84      0.84       303
+                weighted avg       0.85      0.85      0.85       303
