@@ -1,0 +1,393 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2c5f2d;
+    --primary-dark: #204e20;
+    --secondary: #97bc62;
+    --accent: #f0c808;
+    --danger: #e63946;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --gray: #6c757d;
+    --light-gray: #e9ecef;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+    background-color: #f5f7fa;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 顶部导航 */
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.logo i {
+    margin-right: 10px;
+    color: var(--secondary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+nav li {
+    margin-left: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+nav a i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary);
+}
+
+/* 语言切换按钮 */
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray);
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lang-btn.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.lang-btn:hover:not(.active) {
+    background-color: var(--light-gray);
+}
+
+/* 英雄区域 */
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+    width: 100%;
+}
+
+.hero-image {
+    flex: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    display: none; /* 隐藏图片区域 */
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--gray);
+    margin-bottom: 30px;
+    max-width: 100%;
+}
+
+/* 区域标题 */
+.section-header {
+    text-align: center;
+    margin: 50px 0 30px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: var(--gray);
+    font-size: 1.1rem;
+}
+
+/* 技术内容区域 */
+.tech-section {
+    margin-bottom: 60px;
+}
+
+.tech-content {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 40px;
+}
+
+.tech-content p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+.tech-content ul {
+    padding-left: 30px;
+    margin: 25px 0;
+}
+
+.tech-content li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    position: relative;
+    padding-left: 25px;
+}
+
+.tech-content li:before {
+    content: "•";
+    color: var(--secondary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.tech-content strong {
+    color: var(--primary);
+}
+
+/* 页脚 */
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 60px 0 0;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-about h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-about p {
+    color: var(--light-gray);
+    line-height: 1.7;
+}
+
+.footer-links h4, .footer-contact h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links h4:after, .footer-contact h4:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--light-gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--secondary);
+    transform: translateX(5px);
+}
+
+.footer-contact ul {
+    list-style: none;
+}
+
+.footer-contact li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--light-gray);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-bottom p {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background-color: var(--secondary);
+    transform: translateY(-3px);
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero p {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav li {
+        margin: 5px 10px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .language-switcher {
+        margin-top: 15px;
+        margin-left: 0;
+    }
+
+    .tech-content {
+        padding: 25px;
+    }
+}

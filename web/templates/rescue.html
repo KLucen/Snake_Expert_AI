@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中国蛇伤急救指南 - Chinese Snakebite First Aid Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/rescue.css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo">
+          <i class="fas fa-briefcase-medical"></i>
+        </div>
+      </div>
+
+      <h1 id="title">中国蛇伤急救指南</h1>
+      <div class="subtitle" id="subtitle">Chinese Snakebite First Aid Guide</div>
+
+      <div class="header-info">
+        <div class="info-item">
+          <h3>25-28万</h3>
+          <p id="stat1">中国每年蛇伤病例数</p>
+        </div>
+        <div class="info-item">
+          <h3>23种</h3>
+          <p id="stat2">医学重要毒蛇种类</p>
+        </div>
+        <div class="info-item">
+          <h3>4-10月</h3>
+          <p id="stat3">蛇伤高发期</p>
+        </div>
+        <div class="info-item">
+          <h3>95%</h3>
+          <p id="stat4">发生在发展中国家</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="zh">中文</button>
+    <button class="lang-btn" data-lang="en">English</button>
+  </div>
+
+  <button class="emergency-btn" id="emergencyBtn">
+    <i class="fas fa-phone-alt"></i> <span id="emergencyText">紧急求助：拨打120</span>
+  </button>
+
+  <div class="main-content">
+    <div class="card">
+      <h2><i class="fas fa-first-aid"></i> <span id="section1Title">现场急救措施</span></h2>
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3 id="step1Title">脱离危险区域</h3>
+          <p id="step1Desc">立即远离发生咬伤的区域，避免二次咬伤。水中被蛇咬伤者应立即转移到岸边。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3 id="step2Title">认蛇</h3>
+          <p id="step2Desc">尽量记住蛇的基本特征（形态、头型、体纹和颜色），但不要企图捕杀毒蛇。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3 id="step3Title">保持镇定</h3>
+          <p id="step3Desc">紧张恐慌会加速血液循环，促进毒素吸收。保持冷静，部分蛇咬伤是"干咬"（未排毒）。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3 id="step4Title">立即呼救</h3>
+          <p id="step4Desc">及时呼叫120或当地急救电话，快速送往有蛇伤救治能力的医院。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-ban"></i> <span id="section2Title">禁止措施</span></h2>
+      <div class="warning">
+        <p id="warningText">蛇咬伤急救应避免以下措施，遵循"不伤害、不延误"原则</p>
+      </div>
+      <div class="do-not" id="doNotTitle">❌ 禁止操作：</div>
+      <ul>
+        <li id="prohibition1">徒手触碰看似死亡的毒蛇</li>
+        <li id="prohibition2">等待症状发作以确定是否中毒</li>
+        <li id="prohibition3">使用止血带结扎</li>
+        <li id="prohibition4">用力切割伤口或企图用嘴吸出毒素</li>
+        <li id="prohibition5">冰敷或将伤口浸入水中</li>
+        <li id="prohibition6">饮酒止痛或喝咖啡饮料</li>
+        <li id="prohibition7">用烧灼等方法处理伤口</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-stethoscope"></i> <span id="section3Title">中国常见毒蛇类型</span></h2>
+      <div class="snake-types">
+        <div class="snake-card">
+          <h4><i class="fas fa-brain"></i> <span id="snakeType1">神经毒性毒蛇</span></h4>
+          <ul>
+            <li id="snake1">银环蛇</li>
+            <li id="snake2">金环蛇</li>
+            <li id="snake3">眼镜蛇</li>
+            <li id="snake4">海蛇</li>
+          </ul>
+        </div>
+        <div class="snake-card">
+          <h4><i class="fas fa-tint"></i> <span id="snakeType2">血液毒性毒蛇</span></h4>
+          <ul>
+            <li id="snake5">竹叶青蛇</li>
+            <li id="snake6">蝮蛇</li>
+            <li id="snake7">尖吻蝮蛇</li>
+            <li id="snake8">原矛头蝮蛇</li>
+          </ul>
+        </div>
+        <div class="snake-card">
+          <h4><i class="fas fa-biohazard"></i> <span id="snakeType3">细胞毒性毒蛇</span></h4>
+          <ul>
+            <li id="snake9">中华眼镜蛇</li>
+            <li id="snake10">眼镜王蛇</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-syringe"></i> <span id="section4Title">抗蛇毒血清使用原则</span></h2>
+      <div class="antivenom-info">
+        <h3 id="principleTitle">"尽早足量、及时追加、同种专一、异种联合"</h3>
+
+        <div class="principle">
+          <div class="principle-icon">1</div>
+          <div class="principle-content">
+            <strong id="principle1Title">尽早足量</strong>
+            <p id="principle1Desc">抗蛇毒血清启用时间早晚与预后直接相关，局部或全身进展性中毒表现就是可靠指征</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="principle-icon">2</div>
+          <div class="principle-content">
+            <strong id="principle2Title">及时追加</strong>
+            <p id="principle2Desc">中毒症状持续恶化是追加用药的指标，间隔时间约6-8小时</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="principle-icon">3</div>
+          <div class="principle-content">
+            <strong id="principle3Title">同种专一</strong>
+            <p id="principle3Desc">使用针对特定毒蛇的特异性抗蛇毒血清（如银环蛇、眼镜蛇等）</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="principle-icon">4</div>
+          <div class="principle-content">
+            <strong id="principle4Title">异种联合</strong>
+            <p id="principle4Desc">对无特异性抗蛇毒血清的毒蛇咬伤，联合使用同类或相似毒性的抗蛇毒血清</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 id="footer1Title">指南来源</h3>
+        <p id="footer1Item1">中华医学会急诊医学分会</p>
+        <p id="footer1Item2">国家急诊病控中心</p>
+        <p id="footer1Item3">中国医师协会急诊医师分会</p>
+        <p id="footer1Item4">《中华急诊医学杂志》2024年7月</p>
+      </div>
+
+      <div class="footer-section">
+        <h3 id="footer2Title">重要提醒</h3>
+        <p id="footer2Item1">本指南不能替代专业医疗救治</p>
+        <p id="footer2Item2">所有蛇咬伤患者应尽快就医</p>
+        <p id="footer2Item3">无症状者至少留观24小时</p>
+      </div>
+
+      <div class="footer-section">
+        <h3 id="footer3Title">紧急联系电话</h3>
+        <p id="footer3Item1">急救电话: 120</p>
+        <p id="footer3Item2">中毒控制中心: 当地电话号码</p>
+        <p id="footer3Item3">蛇伤专科医院咨询电话</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p id="copyright">© 2024 中国蛇伤救治指南 - 仅作教育目的 | 实际救治请遵循医疗专业人员指导</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/static/js/rescue.js"></script>
+</body>
+</html>

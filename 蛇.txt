@@ -1,0 +1,14 @@
+序号  学名  中文名  wiki链接  图片链接
+0  Boiga kraepelini  绞花林蛇  https://zh.wikipedia.org/wiki/%E7%BB%9E%E8%8A%B1%E6%9E%97%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/2/24/Boiga_kraepelini.jpg
+1 Bungarus multicinctus  银环蛇  https://zh.wikipedia.org/zh-hans/%E9%8A%80%E7%92%B0%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/0/01/Bungarus_multicinctus_2.jpg
+2  Chrysopelea ornata  美丽金花蛇  https://zh.wikipedia.org/wiki/%E9%87%91%E8%8A%B1%E8%9B%87%E5%B1%AC  https://upload.wikimedia.org/wikipedia/commons/b/b6/Chrysopelea_ornata.jpg
+3  Dendrelaphis pictus  过树蛇  https://zh.wikipedia.org/wiki/%E8%BF%87%E6%A0%91%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/4/44/Dendre_pict_080410-6996_tdp.jpg
+4  Elaphe dione  白条锦蛇  https://zh.wikipedia.org/wiki/%E7%99%BD%E6%9D%A1%E9%94%A6%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/0/01/Elaphe_dione.JPG
+5  Naja atra  舟山眼镜蛇  https://zh.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E7%9C%BC%E9%8F%A1%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/4/49/Naja_atra_%2803%29.jpg
+6  Ophiophagus Hannah  眼镜王蛇  https://zh.wikipedia.org/wiki/%E7%9C%BC%E9%95%9C%E7%8E%8B%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/9/98/Ophiophagus-hannah-kaeng-krachan-national-park.jpg
+7  Protobothrops mucrosquamatus  龟壳花  https://zh.wikipedia.org/wiki/%E9%BE%9C%E6%AE%BC%E8%8A%B1  https://upload.wikimedia.org/wikipedia/commons/4/40/Trimeresurus_mucrosquamatus_Taiwan.jpg
+8  Psammodynastes pulverulentus  紫沙蛇  https://zh.wikipedia.org/zh-hans/%E7%B4%AB%E6%B2%99%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/0/08/Psammodynastes_pulverulentus%2C_Common_mock_viper_-_Tha_Yang_District%2C_Phetchaburi_%2827997141896%29.jpg
+9  Rhabdophis subminiatus  红脖颈槽蛇  https://zh.wikipedia.org/wiki/%E7%BA%A2%E8%84%96%E9%A2%88%E6%A7%BD%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/b/bd/Rhabdop_submin_080217-4693_ipb.jpg
+10  Rhabdophis tigrinus  虎斑颈槽蛇  https://zh.wikipedia.org/wiki/%E8%99%8E%E6%96%91%E9%A2%88%E6%A7%BD%E8%9B%87  https://upload.wikimedia.org/wikipedia/commons/4/47/Rhabdophis_tigrinus_IMG_6559.retouch.JPG
+11  Trimeresurus stejnegeri  赤尾青竹丝  https://zh.wikipedia.org/wiki/%E8%B5%A4%E5%B0%BE%E9%9D%92%E7%AB%B9%E7%B5%B2  https://upload.wikimedia.org/wikipedia/commons/c/cd/Trimeresurus_stejnegeri.jpg
+
